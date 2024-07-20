@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
   
-    // New function to load tasks from Local Storage
     function loadTasks() {
       const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
       storedTasks.forEach(taskText => addTask(taskText, false)); // Don't save again when loading
@@ -20,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
       removeBtn.onclick = function() {
         taskList.removeChild(newTask);
         
-        // Update tasks array and Local Storage on removal
+     
         const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
         const taskIndex = storedTasks.indexOf(taskText);
         storedTasks.splice(taskIndex, 1);
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
       taskInput.value = '';
   
       if (save) {
-        // Update tasks array and Local Storage on addition
+      
         const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
         storedTasks.push(taskText);
         localStorage.setItem('tasks', JSON.stringify(storedTasks));
@@ -48,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   
-    // Call loadTasks and addTask on initial load
+  
     loadTasks();
-    addTask(); // Call addTask to handle any pre-populated tasks
+    addTask();
   });
   
