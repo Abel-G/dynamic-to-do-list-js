@@ -39,4 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call addTask on initial load to handle any pre-populated tasks
     addTask();
   });
-  
+  function loadTasks() {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+    storedTasks.forEach(taskText => addTask(taskText, false));}
+    document.addEventListener('DOMContentLoaded', () => {
+        loadTasks();
+        // Other initialization code
+    });
